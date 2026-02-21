@@ -322,7 +322,7 @@ html = f"""<!DOCTYPE html>
     <canvas id="levelChart"></canvas>
   </div>
   <div class="rules">
-    <h2>Последнее обновление</h2>
+    <h2>Последнее обновление данных</h2>
     <p><span id="lastUpdate" data-date="{snap_dates[-1]}">{snap_dates[-1]}</span></p>
     <h2>О клане</h2>
     <p>Three Stripes — русскоязычный клан для тех, кто играет в удовольствие. Никакого хардкора, просто заходим и кайфуем.</p>
