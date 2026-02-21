@@ -180,7 +180,7 @@ html = f"""<!DOCTYPE html>
     background: #1a1a2e;
     color: #eee;
     padding: 20px;
-    max-width: 900px;
+    max-width: 1100px;
     margin: 0 auto;
   }}
   h1 {{
@@ -206,12 +206,17 @@ html = f"""<!DOCTYPE html>
     border-radius: 8px;
     background: #16213e;
   }}
+  .top-grid {{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+  }}
   .chart-container {{
-    margin: 30px 0;
     background: #16213e;
     border-radius: 12px;
     padding: 20px;
-    height: 500px;
+    min-height: 400px;
   }}
   .chart-container h2 {{
     font-size: 1.1em;
@@ -273,7 +278,6 @@ html = f"""<!DOCTYPE html>
     background: #16213e;
     border-radius: 12px;
     padding: 20px;
-    margin-bottom: 20px;
     font-size: 0.9em;
     color: #bbb;
   }}
@@ -285,13 +289,15 @@ html = f"""<!DOCTYPE html>
   .rules ul {{
     margin: 8px 0 8px 20px;
   }}
-  .rules b {{
-    color: #f66;
+  @media (max-width: 768px) {{
+    .top-grid {{
+      grid-template-columns: 1fr;
+    }}
   }}
   @media (max-width: 600px) {{
     body {{ padding: 10px; }}
     td, th {{ padding: 6px 4px; font-size: 0.8em; }}
-    .chart-container {{ height: 400px; padding: 10px; }}
+    .chart-container {{ padding: 10px; }}
   }}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
@@ -306,19 +312,20 @@ html = f"""<!DOCTYPE html>
   <span style="color:#f66">Неактивных: {inactive_count}</span>
 </div>
 
-<div class="chart-container">
-  <h2>Прогресс по уровням</h2>
-  <canvas id="levelChart"></canvas>
-</div>
-
-<div class="rules">
-  <h2>Правила исключения</h2>
-  <p>Игрок считается <b>неактивным</b> и может быть исключён, если за период между двумя последними снапшотами:</p>
-  <ul>
-    <li>Уровень не изменился (дельта = 0)</li>
-    <li>Помощь = 0 в последнем снапшоте</li>
-  </ul>
-  <p>Игроки с &#128274; защищены и не исключаются на общих условиях.</p>
+<div class="top-grid">
+  <div class="chart-container">
+    <h2>Прогресс по уровням</h2>
+    <canvas id="levelChart"></canvas>
+  </div>
+  <div class="rules">
+    <h2>Правила исключения</h2>
+    <p>Игрок считается неактивным и может быть исключён, если за период между двумя последними снапшотами:</p>
+    <ul>
+      <li>Уровень не изменился (дельта = 0)</li>
+      <li>Помощь = 0 в последнем снапшоте</li>
+    </ul>
+    <p>Игроки с &#128274; защищены и не исключаются на общих условиях.</p>
+  </div>
 </div>
 
 <div class="table-wrap">
