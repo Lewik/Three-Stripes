@@ -216,7 +216,8 @@ html = f"""<!DOCTYPE html>
     background: #16213e;
     border-radius: 12px;
     padding: 20px;
-    min-height: 400px;
+    height: 400px;
+    position: relative;
   }}
   .chart-container h2 {{
     font-size: 1.1em;
